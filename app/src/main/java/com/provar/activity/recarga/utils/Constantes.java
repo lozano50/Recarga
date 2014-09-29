@@ -6,6 +6,6 @@ package com.provar.activity.recarga.utils;
 public class Constantes {
 
 
-    public static String PASS_CONFIG = "000000";
+    public final static String PASS_CONFIG = "000000";
 
 }
