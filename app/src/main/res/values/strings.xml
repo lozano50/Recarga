@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Variables de tema-->
+    <string name="app_name">Recarga</string>
+    <string name="title_configuracion">Configuracion</string>
+    <!-- Variables de aplicacion-->
+    <string name="recarga">Recargas</string>
+    <string name="usuarios">Usuarios</string>
+    <string name="configuracion">Configuracion</string>
+    <string name="informes">Informes</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
