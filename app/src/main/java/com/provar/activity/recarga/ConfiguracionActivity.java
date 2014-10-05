@@ -96,38 +96,39 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
     public void ValidarUsuario_() {
 
         //capturamos el layout
-        View capa = this.getLayoutInflater().inflate(R.layout.validar_usuario, null);
+        View capa = this.getLayoutInflater().inflate(R.layout.parametros_terminal, null);
 
         //capturamos la imagen y el campo de texto desde nuestro layout personalizado.
-        tvUsario = (EditText) capa.findViewById(R.id.password);
+        //tvUsario = (EditText) capa.findViewById(R.id.password);
+
 
         AlertDialog.Builder miDialogo = new AlertDialog.Builder(this);
-        miDialogo.setMessage("Ingresa Codigo");
+        miDialogo.setMessage("CONFIGURAR TERMINAL");
 
         //asignamos la vista creada a nuestro diálogo.
         miDialogo.setView(capa);
 
         //establecemos la instrucción en caso afirmativo
-        miDialogo.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+        miDialogo.setPositiveButton("GUARDAR", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                String nombre = tvUsario.getText().toString();
+                //String nombre = tvUsario.getText().toString();
                 // Log.println(BIND_WAIVE_PRIORITY, et1.getText().toString(), et1.getText().toString());
 
                 //  getTextViewResult().setText(nombre);
 
-                if ( !nombre.equals(Constantes.PASS_CONFIG) ) {
-                    Toast.makeText(getApplicationContext(), " CLAVE INCORRECTA ", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                //if ( !nombre.equals(Constantes.PASS_CONFIG) ) {
+                    //Toast.makeText(getApplicationContext(), " CLAVE INCORRECTA ", Toast.LENGTH_SHORT).show();
+                    //return;
+                    //}
 
-                Intent intentUno = new Intent("com.provar.jose.facturacion.ConfiguracionActivity");
-                Bundle bolsa = new Bundle();
-                bolsa.putString("nombreKey",nombre);
-                intentUno.putExtras(bolsa);
-                startActivity(intentUno);
+                //Intent intentUno = new Intent("com.provar.jose.facturacion.ConfiguracionActivity");
+                //Bundle bolsa = new Bundle();
+                //bolsa.putString("nombreKey",nombre);
+                //intentUno.putExtras(bolsa);
+                //startActivity(intentUno);
 
 
             }
@@ -159,8 +160,44 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
     @Override
     public void onClick(View view) {
 
-        tvUsario.setText("prueba 1");
+        System.out.println(" CLASE CONFIGURACION ... " + view.getId());
+        System.out.println(" CLASE CONFIGURACION ... " + R.id.idConfTerminal);
+        System.out.println(" CLASE CONFIGURACION ... " + R.id.idConfGprs);
 
+        switch(view.getId()){
+
+            case R.id.idConfTerminal:
+
+                ValidarUsuario_();
+
+                break;
+            case R.id.idConfGprs:
+
+                /*Dialog dialog1 = new Dialog(this);
+                dialog1.setTitle("CONFIGURAR TERMINAL");
+                dialog1.setContentView(R.layout.parametros_terminal);
+
+                dialog1.show();*/
+
+
+                Toast toast = Toast.makeText(this, "Evento informe", Toast.LENGTH_SHORT );
+                toast.show();
+
+
+                final CharSequence[] items = {"Red", "Green", "Blue"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Exit!")
+                        .setSingleChoiceItems(items, 1, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogInterface, int item) {
+                                Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                builder.create().show();
+
+                break;
+        }
 
 
     }

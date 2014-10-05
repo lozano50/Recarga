@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,19 +9,51 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Ingresar Terminal"
-        android:id="@+id/textView"
+        android:id="@+id/textTerminal"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp" />
+        android:layout_marginTop="10dp" />
 
     <EditText
+        android:id="@+id/idTerminal"
+        android:inputType="numberSigned"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:layout_below="@+id/textTerminal"
+        android:fontFamily="sans-serif"
+        android:hint="CODIGO TERMINAL"
+        android:maxLength="8"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idTerminal"
-        android:layout_below="@+id/textView"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Ingresar Terminal"
+        android:id="@+id/textEntidad"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp" />
+        android:layout_below="@+id/idTerminal"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/idEntidad"
+        android:inputType="numberSigned"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:layout_below="@+id/textEntidad"
+        android:fontFamily="sans-serif"
+        android:hint="CODIGO ENTIDAD"
+        android:maxLength="8"/>
 
 
-</RelativeLayout>
+</LinearLayout>
