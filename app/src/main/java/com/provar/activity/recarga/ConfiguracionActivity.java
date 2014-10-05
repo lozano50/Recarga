@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.provar.activity.recarga.utils.Constantes;
 
 /**
@@ -37,14 +38,15 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
         setContentView(R.layout.activity_configuracion);
 
         tvUsario = (TextView)findViewById(R.id.tvUsuario);
-        Bundle bolsa = getIntent().getExtras();
-        tvUsario.setText(bolsa.getString("nombreKey"));
+        //Bundle bolsa = getIntent().getExtras();
+        //tvUsario.setText(bolsa.getString("nombreKey"));
 
         configurarTerminal = (Button)findViewById(R.id.idConfTerminal);
         configurarGprs     = (Button)findViewById(R.id.idConfGprs);
 
     }
 
+    /*
     @Override
     public void onClick(View v) {
 
@@ -65,7 +67,7 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
                 dialog1.setTitle("CONFIGURAR TERMINAL");
                 dialog1.setContentView(R.layout.parametros_terminal);
 
-                dialog1.show();*/
+                dialog1.show();* /
 
 
                 Toast toast = Toast.makeText(this, "Evento informe", Toast.LENGTH_SHORT );
@@ -86,7 +88,7 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
 
                 break;
         }
-    }
+    }*/
 
     /**
      *
@@ -154,4 +156,12 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+        tvUsario.setText("prueba 1");
+
+
+
+    }
 }

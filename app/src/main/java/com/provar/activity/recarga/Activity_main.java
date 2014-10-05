@@ -39,8 +39,6 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.activity_main);
-
         recargas       = (Button)findViewById(R.id.recarga);
         configuracion  = (Button)findViewById(R.id.configuracion);
         informes       = (Button)findViewById(R.id.informe);
@@ -58,7 +56,6 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
 
-        Toast toast;
 
         switch (view.getId()) {
 
@@ -95,7 +92,7 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
                     Log.e("ERROR", "No ha sido posible leer el archivo" + e.toString());
                 }
 
-                toast = Toast.makeText(this, "Evento Recarga : " + str, Toast.LENGTH_SHORT );
+                Toast toast = Toast.makeText(this, "Evento Recarga : " + str, Toast.LENGTH_SHORT );
                 toast.show();
 
                 break;
@@ -108,8 +105,8 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
 
             case R.id.informe:
 
-                toast = Toast.makeText(this, "Evento informe", Toast.LENGTH_SHORT );
-                toast.show();
+                Toast toast2 = Toast.makeText(this, "Evento informe", Toast.LENGTH_SHORT );
+                toast2.show();
 
                 final CharSequence[] items = {"Red", "Green", "Blue"};
 
@@ -164,10 +161,10 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
                     return;
                 }
 
-                Intent intentUno = new Intent("com.provar.jose.facturacion.ConfiguracionActivity");
-                Bundle bolsa = new Bundle();
-                bolsa.putString("nombreKey",nombre);
-                intentUno.putExtras(bolsa);
+                Intent intentUno = new Intent("com.provar.activity.recarga.ConfiguracionActivity");
+                //Bundle bolsa = new Bundle();
+                //bolsa.putString("nombreKey",nombre);
+                //intentUno.putExtras(bolsa);
                 startActivity(intentUno);
 
 
