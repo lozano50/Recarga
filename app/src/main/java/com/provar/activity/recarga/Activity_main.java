@@ -35,6 +35,7 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -67,8 +68,8 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
 
                 // CREACION DEL ARCHIVO Y ESCRITURA
                 try {
-                    OutputStreamWriter OSW = new OutputStreamWriter(
-                            openFileOutput("pruebas.DAT", 0));
+
+                    OutputStreamWriter OSW = new OutputStreamWriter(openFileOutput("pruebas.DAT", 0));
                     OSW.write("TEXTO PRUEBA");
                     OSW.flush();
                     OSW.close();
@@ -101,24 +102,14 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
 
             case R.id.configuracion:
 
-                //textViewResult.setText(" Configuracion " + this);
-
                 ValidarUsuario_();
-
-                //if (  !ValidarUsuario_() ) {
-
-                //}
-                //textViewResult.setText(" Configuracion " + );
 
                 break;
 
             case R.id.informe:
 
-                //textViewResult.setText(" Informe ");
-
                 toast = Toast.makeText(this, "Evento informe", Toast.LENGTH_SHORT );
                 toast.show();
-
 
                 final CharSequence[] items = {"Red", "Green", "Blue"};
 
@@ -131,9 +122,6 @@ public class Activity_main extends ActionBarActivity implements View.OnClickList
                         });
 
                 builder.create().show();
-
-
-
 
                 break;
 
