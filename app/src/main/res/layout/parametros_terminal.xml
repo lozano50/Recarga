@@ -53,7 +53,7 @@
         android:layout_below="@+id/textEntidad"
         android:fontFamily="sans-serif"
         android:hint="CODIGO ENTIDAD"
-        android:maxLength="8"/>
+        android:maxLength="15"/>
 
 
 </LinearLayout>

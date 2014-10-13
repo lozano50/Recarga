@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -24,9 +25,11 @@ import com.provar.activity.recarga.utils.Constantes;
 public class ConfiguracionActivity extends ActionBarActivity implements View.OnClickListener {
 
     TextView tvUsario;
-    Button configurarTerminal;
-    Button configurarGprs;
-
+    private Button configurarTerminal;
+    private Button configurarGprs;
+    private TextView codigoTerminal;
+    private TextView codigoEntidad;
+    private SharedPreferences preferencias;
     /**
      *
      * @param savedInstanceState
@@ -95,12 +98,22 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
      */
     public void ValidarUsuario_() {
 
+        preferencias = getSharedPreferences(Constantes.PREFERENCIA_APP, 0);
+
         //capturamos el layout
+        String codTerminal = null;
+        String codEntidad  = null;
+
         View capa = this.getLayoutInflater().inflate(R.layout.parametros_terminal, null);
 
-        //capturamos la imagen y el campo de texto desde nuestro layout personalizado.
-        //tvUsario = (EditText) capa.findViewById(R.id.password);
+        codigoTerminal = (EditText)capa.findViewById(R.id.idTerminal);
+        codigoEntidad  = (EditText)capa.findViewById(R.id.idEntidad);
 
+        codTerminal = preferencias.getString(Constantes.COD_TERMINAL,"00000000");
+        codEntidad  = preferencias.getString(Constantes.COD_ENTIDAD,"000010101000000");
+
+        codigoTerminal.setText(codTerminal);
+        codigoEntidad.setText(codEntidad);
 
         AlertDialog.Builder miDialogo = new AlertDialog.Builder(this);
         miDialogo.setMessage("CONFIGURAR TERMINAL");
@@ -112,24 +125,16 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
         miDialogo.setPositiveButton("GUARDAR", new DialogInterface.OnClickListener() {
 
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(DialogInterface dialog, int which)
+            {
 
-                //String nombre = tvUsario.getText().toString();
-                // Log.println(BIND_WAIVE_PRIORITY, et1.getText().toString(), et1.getText().toString());
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.putString(Constantes.COD_TERMINAL, codigoTerminal.getText().toString());
+                editor.putString(Constantes.COD_ENTIDAD,  codigoEntidad.getText().toString());
 
-                //  getTextViewResult().setText(nombre);
+                editor.commit();
 
-                //if ( !nombre.equals(Constantes.PASS_CONFIG) ) {
-                    //Toast.makeText(getApplicationContext(), " CLAVE INCORRECTA ", Toast.LENGTH_SHORT).show();
-                    //return;
-                    //}
-
-                //Intent intentUno = new Intent("com.provar.jose.facturacion.ConfiguracionActivity");
-                //Bundle bolsa = new Bundle();
-                //bolsa.putString("nombreKey",nombre);
-                //intentUno.putExtras(bolsa);
-                //startActivity(intentUno);
-
+                Toast.makeText(getApplicationContext(), " DATOS ALMACENADOS ", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -198,7 +203,22 @@ public class ConfiguracionActivity extends ActionBarActivity implements View.OnC
 
                 break;
         }
-
-
     }
+
+    public TextView getCodigoTerminal() {
+        return codigoTerminal;
+    }
+
+    public void setCodigoTerminal(EditText codigoTerminal) {
+        this.codigoTerminal = codigoTerminal;
+    }
+
+    public TextView getCodigoEntidad() {
+        return codigoEntidad;
+    }
+
+    public void setCodigoEntidad(EditText codigoEntidad) {
+        this.codigoEntidad = codigoEntidad;
+    }
+
 }
